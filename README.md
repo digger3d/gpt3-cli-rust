@@ -1,6 +1,6 @@
-# CLI tool to call the GPT-3 API
+# Tool to call the GPT-3 API
 
-This CLI allows you to quickly generate GPT-3 generated text through the command line. Compile it using the rust toolset.
+This program allows you to quickly generate GPT-3 generated text through the command line. Compile it using the rust toolset.
 
 ## Options
 
