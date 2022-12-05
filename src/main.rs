@@ -121,6 +121,7 @@ async fn main() {
                 completion["choices"][0]["text"]
                     .as_str()
                     .unwrap_or("No completion found.")
+                    .trim()
             );
         }
         Err(e) => {
