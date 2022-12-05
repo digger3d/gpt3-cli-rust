@@ -4,11 +4,11 @@ use confy;
 #[derive(Parser, Debug)]
 #[clap(
     author = "Rommel K.",
-    version = "1.0",
+    version = "1.01",
     about = "A simple CLI to call the GPT-3 API"
 )]
 struct Args {
-    /// Name of the model to use. Defaults to "text-davinci-003"
+    /// Name of the model to use.
     #[clap(short, long, default_value = "text-davinci-003")]
     model: String,
 
@@ -19,6 +19,14 @@ struct Args {
     /// Store the API key passed as an argument in the config file
     #[clap(short, long, default_value = "false")]
     store: bool,
+
+    /// Max number of tokens to return.
+    #[clap(short = 'x', long, default_value = "256")]
+    max_tokens: u32,
+
+    /// Temperature to use.
+    #[clap(short, long, default_value = "0.7")]
+    temperature: f32,
 
     /// The prompt to use for GPT-3
     prompt: String,
@@ -93,6 +101,8 @@ async fn main() {
         .json(&serde_json::json!({
             "model": args.model,
             "prompt": args.prompt,
+            "max_tokens": args.max_tokens,
+            "temperature": args.temperature,
         }))
         .send()
         .await;
