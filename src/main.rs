@@ -16,7 +16,7 @@ struct Args {
     #[clap(short, long)]
     key: Option<String>,
 
-    // Store the API key passed as an argument in the config file
+    /// Store the API key passed as an argument in the config file
     #[clap(short, long, default_value = "false")]
     store: bool,
 
